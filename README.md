@@ -20,14 +20,14 @@ Ubuntu 24.04 + PostgreSQL 16.
    GRANT ALL PRIVILEGES ON DATABASE "project-sem-1" TO validator;
    \q
    psql -h localhost -U validator -d "project-sem-1"
-   CREATE TABLE prices (
-    id TEXT,
-    created_at DATE,
-    name TEXT,
-    category TEXT,
-    price NUMERIC
-   );
-   ```
+   CREATE TABLE IF NOT EXISTS prices (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            category VARCHAR(255) NOT NULL,
+            price DECIMAL(10,2) NOT NULL,
+            create_date TIMESTAMP NOT NULL
+        );   
+```
 
 2. Клонирование репозитория
 ```
